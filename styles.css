@@ -1038,7 +1038,7 @@ button {
 }
 
 .data-figure {
-  width: min(680px, 100%);
+  width: min(426px, 100%);
   height: auto;
   transform: translateX(-72px);
   mix-blend-mode: multiply;

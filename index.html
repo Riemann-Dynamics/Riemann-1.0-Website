@@ -174,7 +174,7 @@
             <p>
               Riemann-1.0 turns large-scale heterogeneous embodied experience into a
               generalist closed-loop robot policy, executing complex long-horizon
-              real-world tasks with precise, state-aware manipulation.
+              real-world tasks with precise manipulation.
             </p>
             <div class="overview-video-grid" role="group" aria-label="Long-horizon real-world task videos">
               <figure class="overview-video-card">
@@ -225,7 +225,7 @@
             <p>
               For real-world evaluation, we fine-tune a generalist model on all
               demonstration data, enabling a single policy to perform all target tasks.
-              Across the following four household manipulation tasks, Riemann-1.0 maintains
+              Across the following four manipulation tasks, Riemann-1.0 maintains
               at least 80.0% success rate (SR) and 91.0% progress success rate (PSR) on every task,
               while exceeding the strongest open-source baseline by 15 SR points on average.
             </p>
@@ -452,7 +452,7 @@
               Riemann-1.0 preserves the causal order of interaction with a unified
               autoregressive factorization over visual latents and actions. Multi-view
               observations, robot states, and embodiment-specific action tokens share a
-              Video/Action DiT under structured causal visibility, preventing future
+              Action/Video DiT under structured causal visibility, preventing future
               observation leakage while retaining teacher-forced training.
             </p>
           </header>
@@ -495,15 +495,15 @@
 
             <div class="stage-grid">
               <article>
-                <h4>Stage 1 · LAM pseudo-action pretraining</h4>
+                <h4>Stage 1 · LAM-Action Bootstrap</h4>
                 <p>Frozen LAM pseudo actions supervise unlabeled egocentric video while visual dynamics dominate the objective with λ=0.1.</p>
               </article>
               <article>
-                <h4>Stage 2 · Real-action supervised training</h4>
+                <h4>Stage 2 · Trajectory-Grounded Alignment</h4>
                 <p>3D-hand human data, UMI demonstrations, and robot trajectories align real action spaces under balanced learning with λ=0.5.</p>
               </article>
               <article>
-                <h4>Stage 3 · Robot policy enhancement</h4>
+                <h4>Stage 3 · Robot-Policy Enhancement</h4>
                 <p>High-quality robot-only trajectories sharpen state-conditioned executable control with policy-focused supervision at λ=0.9.</p>
               </article>
             </div>
@@ -554,7 +554,7 @@
           <div class="simulator-modes">
             <article class="simulator-mode policy-mode">
               <h3>World Policy</h3>
-              <p>Use clean observations, state, and task context to denoise the next action chunk.</p>
+              <p>Riemann-1.0 can act as a world policy to use observations (images + states) and task prompt to denoise the next action chunk.</p>
               <div class="mode-flow">
                 <span>Observation</span><b aria-hidden="true">→</b><span>Action</span>
               </div>
@@ -562,9 +562,9 @@
 
             <article class="simulator-mode visual-mode">
               <h3>World Simulator</h3>
-              <p>Condition on history, state, prompt, and selected future actions to roll out action-consistent future observations.</p>
+              <p>Given the first frame image, prompt, and specified future actions, Riemann-1.0 can act as a world simulator to roll out action-consistent future observations.</p>
               <div class="mode-flow">
-                <span>History + action</span><b aria-hidden="true">→</b><span>Future video</span>
+                <span>Context + action</span><b aria-hidden="true">→</b><span>Future video</span>
               </div>
 
               <div class="world-simulator-demo">
