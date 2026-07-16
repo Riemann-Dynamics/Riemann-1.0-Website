@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Riemann-1.0 | Advanced Embodied World Action Model</title>
+    <meta
+      name="description"
+      content="Riemann-1.0 is a fully causal autoregressive World Action Model for scalable embodied intelligence."
+    >
+    <meta name="theme-color" content="#f2f4ef">
+    <link rel="canonical" href="https://riemann-1.github.io/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Riemann-1.0">
+    <meta
+      property="og:description"
+      content="Advanced Embodied World Action Model for Physical AI"
+    >
+    <meta property="og:url" content="https://riemann-1.github.io/">
+    <meta
+      property="og:image"
+      content="https://riemann-1.github.io/assets/teaser.png"
+    >
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="assets/riemann-dynamics-logo.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="Riemann-1.0 home">
+          <img
+            src="assets/riemann-dynamics-logo.png"
+            alt="Riemann Dynamics"
+            width="249"
+            height="56"
+          >
+        </a>
+
+        <button
+          class="menu-button"
+          type="button"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          aria-controls="site-navigation"
+          data-menu-button
+        >
+          <span aria-hidden="true">☰</span>
+        </button>
+
+        <nav class="site-nav site-links" id="site-navigation" aria-label="Project links" data-navigation>
+          <a href="#" aria-label="Blog link placeholder">Blog</a>
+          <a href="#" aria-label="Code link placeholder">Code</a>
+          <a href="#" aria-label="Paper link placeholder">Paper</a>
+        </nav>
+      </div>
+    </header>
+
+    <nav class="section-nav" aria-label="Section directory" data-section-nav>
+      <a href="#overview">Overview</a>
+      <a href="#real-world">Real-World</a>
+      <a href="#simulation">Simulation</a>
+      <a href="#data">Data Infra</a>
+      <a href="#method">Method</a>
+      <a href="#inference">Inference</a>
+      <!-- <a href="#imagination">Imagination</a> -->
+    </nav>
+
+    <main id="main-content">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <img
+          class="hero-media"
+          src="assets/desk_kitchen.png"
+          alt="A dual-arm robot performing a long-horizon desk organization task"
+          width="2400"
+          height="1349"
+          fetchpriority="high"
+        >
+        <div class="hero-scrim" aria-hidden="true"></div>
+        <div class="hero-content page-shell">
+          <h1 id="hero-title">Riemann-1.0</h1>
+          <p class="hero-subtitle">Advanced Embodied World Action Model for Physical AI</p>
+          <p class="hero-lead">
+            A fully causal autoregressive World Action Model that unifies executable
+            robot policy and action-conditioned world simulation across heterogeneous
+            embodiments.
+          </p>
+          <nav class="hero-actions" aria-label="Page shortcuts">
+            <a class="button button-primary" href="#overview">
+              Explore the work <span aria-hidden="true">↓</span>
+            </a>
+            <a class="button button-quiet" href="#real-world">
+              View results <span aria-hidden="true">↘</span>
+            </a>
+          </nav>
+        </div>
+      </section>
+
+      <section class="metrics-band" aria-label="Headline results">
+        <div class="metric-grid page-shell">
+          <div class="metric-item">
+            <strong>132K+</strong>
+            <span>Raw source hours</span>
+          </div>
+          <div class="metric-item">
+            <strong>85.0%</strong>
+            <span>Real-world SR</span>
+          </div>
+          <div class="metric-item">
+            <strong>99.0%</strong>
+            <span>LIBERO</span>
+          </div>
+          <div class="metric-item">
+            <strong>94.3%</strong>
+            <span>RoboTwin2.0</span>
+          </div>
+          <div class="metric-item">
+            <strong>62.6%</strong>
+            <span>RoboCasa365</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section overview-section" id="overview" aria-labelledby="overview-title">
+        <div class="page-shell">
+          <header class="section-heading">
+            <h2 id="overview-title">One causal model, from open-world experience to robot control.</h2>
+            <p>
+              Riemann-1.0 formulates robot interaction as a causal autoregressive
+              sequence: history predicts the next action, the action conditions the
+              next visual state, and real observations refresh the context. This
+              ordering lets one model serve as both an online robot policy and an
+              action-conditioned visual world simulator.
+            </p>
+          </header>
+
+          <figure class="figure-frame teaser-figure">
+            <button
+              class="figure-button"
+              type="button"
+              data-lightbox="assets/teaser.png"
+              data-lightbox-alt="Riemann-1.0 overview"
+              aria-label="Open the Riemann-1.0 overview"
+            >
+              <img
+                src="assets/teaser.png"
+                alt="Riemann-1.0 overview of data curation, causal action-video modeling, training, simulation, and performance"
+                width="2800"
+                height="1252"
+              >
+              <span class="figure-open" aria-hidden="true">↗</span>
+            </button>
+          </figure>
+
+          <div class="contribution-grid">
+            <article>
+              <h3>Fully causal autoregressive WAM</h3>
+              <p>Jointly model multi-view observations, robot states, and embodiment-specific actions in the order used by real robot control.</p>
+            </article>
+            <article>
+              <h3>Progressive embodied pretraining</h3>
+              <p>Transfer from weakly supervised human interaction video to UMI, exoskeleton, and heterogeneous robot action trajectories.</p>
+            </article>
+            <article>
+              <h3>Policy and simulator in one model</h3>
+              <p>Use the same causal action-video model for executable control and action-conditioned future-state rollout.</p>
+            </article>
+          </div>
+
+          <div class="overview-outcome">
+            <p>
+              Riemann-1.0 turns large-scale heterogeneous embodied experience into a
+              generalist closed-loop robot policy, executing complex long-horizon
+              real-world tasks with precise, state-aware manipulation.
+            </p>
+            <div class="overview-video-grid" role="group" aria-label="Long-horizon real-world task videos">
+              <figure class="overview-video-card">
+                <video
+                  src="videos/long_cloth.mp4"
+                  controls
+                  playsinline
+                  muted
+                  loop
+                  preload="metadata"
+                  aria-label="For the clothes on the tabletop, keep folding them and stacking them together."
+                ></video>
+                <figcaption>For the clothes on the tabletop, keep folding them and stacking them together.</figcaption>
+              </figure>
+              <figure class="overview-video-card">
+                <video
+                  src="videos/long_cube.mp4"
+                  controls
+                  playsinline
+                  muted
+                  loop
+                  preload="metadata"
+                  aria-label="First place all yellow blocks flush against each other, then stack all red cubes, then stack all orange cubes, and finally stack all purple cubes."
+                ></video>
+                <figcaption>First place all yellow blocks flush against each other, then stack all red cubes, then stack all orange cubes, and finally stack all purple cubes.</figcaption>
+              </figure>
+              <figure class="overview-video-card">
+                <video
+                  src="videos/long_desk.mp4"
+                  controls
+                  playsinline
+                  muted
+                  loop
+                  preload="metadata"
+                  aria-label="Organize the desktop by placing the cluttered objects on the desk in their proper places."
+                ></video>
+                <figcaption>Organize the desktop by placing the cluttered objects on the desk in their proper places.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section real-world-section" id="real-world" aria-labelledby="real-world-title">
+        <div class="page-shell">
+          <header class="section-heading">
+            <h2 id="real-world-title">Real-World</h2>
+            <p>
+              For real-world evaluation, we fine-tune a generalist model on all
+              demonstration data, enabling a single policy to perform all target tasks.
+              Across the following four household manipulation tasks, Riemann-1.0 maintains
+              at least 80.0% success rate (SR) and 91.0% progress success rate (PSR) on every task,
+              while exceeding the strongest open-source baseline by 15 SR points on average.
+            </p>
+          </header>
+
+          <div class="task-grid">
+            <article class="task-card">
+              <h3>Desk</h3>
+              <p>Place the stuffed toy, tissue pack, charger, cube, and black tape into the box, then place the pen into the pen holder.</p>
+              <div class="task-scores">
+                <div><strong>80.0%</strong><span>SR</span></div>
+                <div><strong>95.2%</strong><span>PSR</span></div>
+              </div>
+            </article>
+            <article class="task-card">
+              <h3>Cube stacking</h3>
+              <p>Stack the cubes with the right hand in the order of blue, yellow, red, green, and green</p>
+              <div class="task-scores">
+                <div><strong>85.0%</strong><span>SR</span></div>
+                <div><strong>91.6%</strong><span>PSR</span></div>
+              </div>
+            </article>
+            <article class="task-card">
+              <h3>Kitchen</h3>
+              <p>Put the spoon and fork into the basket, and place the plate and bowl on the rack.</p>
+              <div class="task-scores">
+                <div><strong>90.0%</strong><span>SR</span></div>
+                <div><strong>98.4%</strong><span>PSR</span></div>
+              </div>
+            </article>
+            <article class="task-card">
+              <h3>Clothes</h3>
+              <p>Fold this deformable garment on the table through bimanual coordination and state-dependent correction.</p>
+              <div class="task-scores">
+                <div><strong>85.0%</strong><span>SR</span></div>
+                <div><strong>92.5%</strong><span>PSR</span></div>
+              </div>
+            </article>
+          </div>
+
+          <div class="real-world-video" data-task-video>
+            <div class="real-world-video-stage">
+              <video
+                src="videos/desk_1080p_2x.mp4"
+                controls
+                playsinline
+                preload="metadata"
+                data-task-video-player
+              ></video>
+              <span class="video-speed-badge" aria-hidden="true">2X</span>
+            </div>
+            <div class="video-selector" role="group" aria-label="Real-world task videos">
+              <button type="button" class="is-active" aria-pressed="true" data-task-video-src="videos/desk_1080p_2x.mp4" data-video-label="Desk">Desk</button>
+              <button type="button" data-task-video-src="videos/cube-stacking_1080p_2x.mp4" data-video-label="Cube stacking">Cube stacking</button>
+              <button type="button" data-task-video-src="videos/kitchen_1080p_2x.mp4" data-video-label="Kitchen">Kitchen</button>
+              <button type="button" data-task-video-src="videos/clothes_1080p_2x.mp4" data-video-label="Clothes">Clothes</button>
+            </div>
+          </div>
+
+          <div class="generalization-panel" role="group" aria-label="Real-world generalization results">
+            <div>
+              <h3>Generalization beyond post-training tasks</h3>
+              <p>
+                Held-out real-robot evaluations compositional generalization by
+                recombining seen objects into unseen tasks, and OOD zero-shot transfer
+                with unseen objects and unseen tasks without any additional demonstrations.
+              </p>
+            </div>
+            <div class="generalization-grid">
+              <div><strong>65.0%</strong><span>Compositional generalization SR</span></div>
+              <div><strong>85.0%</strong><span>OOD zero-shot SR</span></div>
+              <div><strong>75.0%</strong><span>Overall SR</span></div>
+            </div>
+            <div class="generalization-video-grid" role="group" aria-label="Generalization videos">
+              <figure class="generalization-video-card">
+                <div class="generalization-video-stage">
+                  <video src="videos/CG_1.mp4" controls playsinline muted loop preload="metadata" aria-label="Place both bowls stacked on the plate."></video>
+                  <span class="generalization-speed-badge" aria-hidden="true">3X</span>
+                </div>
+                <figcaption><span class="generalization-video-type">Compositional Generalization</span><span>Place both bowls stacked on the plate.</span></figcaption>
+              </figure>
+              <figure class="generalization-video-card">
+                <div class="generalization-video-stage">
+                  <video src="videos/CG_2.mp4" controls playsinline muted loop preload="metadata" aria-label="Place the fork into the pen holder"></video>
+                  <span class="generalization-speed-badge" aria-hidden="true">3X</span>
+                </div>
+                <figcaption><span class="generalization-video-type">Compositional Generalization</span><span>Place the fork into the pen holder</span></figcaption>
+              </figure>
+              <figure class="generalization-video-card">
+                <div class="generalization-video-stage">
+                  <video src="videos/CG_3.mp4" controls playsinline muted loop preload="metadata" aria-label="First, place the green cube on the red plate, then place the purple cube in the green bowl, and finally place the red cube on the red plate."></video>
+                  <span class="generalization-speed-badge" aria-hidden="true">3X</span>
+                </div>
+                <figcaption><span class="generalization-video-type">Compositional Generalization</span><span>First, place the green cube on the red plate, then place the purple cube in the green bowl, and finally place the red cube on the red plate.</span></figcaption>
+              </figure>
+              <figure class="generalization-video-card">
+                <div class="generalization-video-stage">
+                  <video src="videos/CG_4.mp4" controls playsinline muted loop preload="metadata" aria-label="Put the red cube on the yellow plate."></video>
+                  <span class="generalization-speed-badge" aria-hidden="true">3X</span>
+                </div>
+                <figcaption><span class="generalization-video-type">Compositional Generalization</span><span>Put the red cube on the yellow plate.</span></figcaption>
+              </figure>
+              <figure class="generalization-video-card">
+                <div class="generalization-video-stage">
+                  <video src="videos/OOD_1.mp4" controls playsinline muted loop preload="metadata" aria-label="Put the white paper ball into the trash can."></video>
+                  <span class="generalization-speed-badge" aria-hidden="true">3X</span>
+                </div>
+                <figcaption><span class="generalization-video-type">OOD zero-shot</span><span>Put the white paper ball into the trash can.</span></figcaption>
+              </figure>
+              <figure class="generalization-video-card">
+                <div class="generalization-video-stage">
+                  <video src="videos/OOD_2.mp4" controls playsinline muted loop preload="metadata" aria-label="Put the Rubik cube into the basket."></video>
+                  <span class="generalization-speed-badge" aria-hidden="true">3X</span>
+                </div>
+                <figcaption><span class="generalization-video-type">OOD zero-shot</span><span>Put the Rubik cube into the basket.</span></figcaption>
+              </figure>
+              <figure class="generalization-video-card">
+                <div class="generalization-video-stage">
+                  <video src="videos/OOD_3.mp4" controls playsinline muted loop preload="metadata" aria-label="Put the towel into the basin."></video>
+                  <span class="generalization-speed-badge" aria-hidden="true">3X</span>
+                </div>
+                <figcaption><span class="generalization-video-type">OOD zero-shot</span><span>Put the towel into the basin.</span></figcaption>
+              </figure>
+              <figure class="generalization-video-card">
+                <div class="generalization-video-stage">
+                  <video src="videos/OOD_4.mp4" controls playsinline muted loop preload="metadata" aria-label="Fold the blue towel on the table and place it on the right side"></video>
+                  <span class="generalization-speed-badge" aria-hidden="true">3X</span>
+                </div>
+                <figcaption><span class="generalization-video-type">OOD zero-shot</span><span>Fold the blue towel on the table and place it on the right side</span></figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section simulation-section" id="simulation" aria-labelledby="simulation-title">
+        <div class="page-shell">
+          <header class="section-heading">
+            <h2 id="simulation-title">Simulation benchmarks</h2>
+            <p>
+              Riemann-1.0 reaches 99.0% average success on LIBERO, 94.3% on RoboTwin 2.0,
+              and 62.6% on RoboCasa365 under the reported evaluation protocols.
+            </p>
+          </header>
+
+          <div class="benchmark-chart-grid" role="group" aria-label="Benchmark average success rankings">
+            <article class="benchmark-chart-card">
+              <h3>LIBERO</h3>
+              <div class="benchmark-plot benchmark-plot-libero">
+                <div class="plot-y-axis" aria-hidden="true"><span>100</span><span>99</span><span>98</span><span>97</span></div>
+                <ol class="benchmark-bars" aria-label="LIBERO average success">
+                  <li class="is-ours" style="--bar: 146.7px"><b>99.0</b><i></i><span>Riemann-1.0</span></li>
+                  <li style="--bar: 142px"><b>98.9</b><i></i><span>Being-H0.5</span></li>
+                  <li style="--bar: 142px"><b>98.9</b><i></i><span>G0.5</span></li>
+                  <li style="--bar: 117.3px"><b>98.6</b><i></i><span>ABot-M0</span></li>
+                  <li style="--bar: 110px"><b>98.5</b><i></i><span>LingBot-VA</span></li>
+                </ol>
+              </div>
+            </article>
+
+            <article class="benchmark-chart-card">
+              <h3>RoboTwin 2.0</h3>
+              <div class="benchmark-plot benchmark-plot-robotwin">
+                <div class="plot-y-axis" aria-hidden="true"><span>100</span><span>95</span><span>90</span><span>85</span><span>80</span></div>
+                <ol class="benchmark-bars" aria-label="RoboTwin 2.0 average success">
+                  <li class="is-ours" style="--bar: 157.3px"><b>94.3</b><i></i><span>Riemann-1.0</span></li>
+                  <li style="--bar: 155.1px"><b>94.1</b><i></i><span>ABot-M0.5</span></li>
+                  <li style="--bar: 146.3px"><b>93.3</b><i></i><span>G0.5</span></li>
+                  <li style="--bar: 134.2px"><b>92.2</b><i></i><span>LingBot-VA</span></li>
+                  <li style="--bar: 129.8px"><b>91.8</b><i></i><span>Fast-WAM</span></li>
+                </ol>
+              </div>
+            </article>
+
+            <article class="benchmark-chart-card">
+              <h3>RoboCasa365</h3>
+              <div class="benchmark-plot benchmark-plot-robocasa">
+                <div class="plot-y-axis" aria-hidden="true"><span>70</span><span>60</span><span>50</span><span>40</span><span>30</span></div>
+                <ol class="benchmark-bars" aria-label="RoboCasa365 average success">
+                  <li class="is-ours" style="--bar: 179.3px"><b>62.6</b><i></i><span>Riemann-1.0</span></li>
+                  <li style="--bar: 133.1px"><b>54.2</b><i></i><span>ABot-M0.5</span></li>
+                  <li style="--bar: 83.1px"><b>45.1</b><i></i><span>LingBot-VA</span></li>
+                  <li style="--bar: 75.4px"><b>43.7</b><i></i><span>GR00T-N1.5</span></li>
+                  <li style="--bar: 74.3px"><b>43.5</b><i></i><span>Fast-WAM</span></li>
+                </ol>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section data-section" id="data" aria-labelledby="data-title">
+        <div class="page-shell">
+          <header class="section-heading">
+            <h2 id="data-title">Data Infra</h2>
+            <p>
+              Riemann-1.0 converts 132K+ hours of heterogeneous embodied experience into
+              action-level supervision through hierarchical VLM segmentation, instruction
+              and action annotation, quality filtering, 3D hand-action reconstruction,
+              semantic categorization, and scene-skill balancing. Egocentric human videos
+              provide broad interaction priors, while UMI / exoskeleton demonstrations and
+              robot trajectories progressively ground those priors in executable control.
+            </p>
+          </header>
+
+          <div class="data-composition">
+            <img
+              class="data-figure"
+              src="assets/data_infra.png"
+              alt="Data infrastructure composition: 76% human egocentric, 15% UMI and exoskeleton, and 9% robot trajectories."
+              width="3260"
+              height="1564"
+              loading="lazy"
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="section method-section" id="method" aria-labelledby="method-title">
+        <div class="page-shell">
+          <header class="section-heading on-dark">
+            <h2 id="method-title">Causal video-action architecture</h2>
+            <p>
+              Riemann-1.0 preserves the causal order of interaction with a unified
+              autoregressive factorization over visual latents and actions. Multi-view
+              observations, robot states, and embodiment-specific action tokens share a
+              Video/Action DiT under structured causal visibility, preventing future
+              observation leakage while retaining teacher-forced training.
+            </p>
+          </header>
+
+
+          <figure class="figure-frame figure-frame-light method-architecture-figure">
+            <button
+              class="figure-button"
+              type="button"
+              data-lightbox="assets/model-architecture.png"
+              data-lightbox-alt="Riemann-1.0 causal action-video architecture"
+              aria-label="Open the causal action-video architecture"
+            >
+              <img
+                src="assets/model-architecture.png"
+                alt="Riemann-1.0 architecture with visual, state, action, and prompt tokens"
+                width="2400"
+                height="1350"
+                loading="lazy"
+              >
+              <span class="figure-open" aria-hidden="true">↗</span>
+            </button>
+            <figcaption>
+              A shared Video/Action DiT learns visual dynamics and executable actions through
+              state/action tokens, embodiment-aware interfaces, coordinate-aware position
+              encoding, and structured causal attention masks.
+            </figcaption>
+          </figure>
+
+          <div class="training-block">
+            <header>
+              <h3>Three-stage training</h3>
+              <p>
+                The same action-video objective is retained while the action loss weight
+                increases from visual-dynamics-first pretraining to balanced multi-source
+                alignment and finally policy-focused robot enhancement.
+              </p>
+            </header>
+
+
+            <div class="stage-grid">
+              <article>
+                <h4>Stage 1 · LAM pseudo-action pretraining</h4>
+                <p>Frozen LAM pseudo actions supervise unlabeled egocentric video while visual dynamics dominate the objective with λ=0.1.</p>
+              </article>
+              <article>
+                <h4>Stage 2 · Real-action supervised training</h4>
+                <p>3D-hand human data, UMI demonstrations, and robot trajectories align real action spaces under balanced learning with λ=0.5.</p>
+              </article>
+              <article>
+                <h4>Stage 3 · Robot policy enhancement</h4>
+                <p>High-quality robot-only trajectories sharpen state-conditioned executable control with policy-focused supervision at λ=0.9.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section inference-section" id="inference" aria-labelledby="inference-title">
+        <div class="page-shell">
+          <header class="section-heading">
+            <h2 id="inference-title">Inference</h2>
+            <p>
+              Riemann-1.0 denoises the next action chunk from a growing visual-state cache.
+              After execution, real observations are encoded back into clean context tokens;
+              long rollouts use a sliding temporal window while preserving the same causal semantics.
+            </p>
+          </header>
+
+          <figure class="figure-frame inference-figure">
+            <button
+              class="figure-button"
+              type="button"
+              data-lightbox="assets/closed-loop-inference.png"
+              data-lightbox-alt="Closed-loop autoregressive inference"
+              aria-label="Open the closed-loop inference architecture"
+            >
+              <img
+                src="assets/closed-loop-inference.png"
+                alt="Autoregressive action denoising and real-observation cache updates"
+                width="2400"
+                height="1350"
+                loading="lazy"
+              >
+              <span class="figure-open" aria-hidden="true">↗</span>
+            </button>
+          </figure>
+
+          <div class="simulator-intro">
+            <h3>Unified Robot Simulator</h3>
+            <p>
+              The same causal model supports two complementary inference modes. World Policy
+              maps observed history to executable actions, while World Simulator treats a
+              candidate future action trajectory as a controllable input and predicts its
+              visual consequences for rollout inspection and action-plan comparison.
+            </p>
+          </div>
+
+          <div class="simulator-modes">
+            <article class="simulator-mode policy-mode">
+              <h3>World Policy</h3>
+              <p>Use clean observations, state, and task context to denoise the next action chunk.</p>
+              <div class="mode-flow">
+                <span>Observation</span><b aria-hidden="true">→</b><span>Action</span>
+              </div>
+            </article>
+
+            <article class="simulator-mode visual-mode">
+              <h3>World Simulator</h3>
+              <p>Condition on history, state, prompt, and selected future actions to roll out action-consistent future observations.</p>
+              <div class="mode-flow">
+                <span>History + action</span><b aria-hidden="true">→</b><span>Future video</span>
+              </div>
+
+              <div class="world-simulator-demo">
+                <video
+                  class="world-simulator-video"
+                  src="videos/world-simulator-01.mp4"
+                  controls
+                  playsinline
+                  muted
+                  loop
+                  preload="metadata"
+                  data-simulator-video-player
+                  aria-label="Grasp the lower pant leg and waistband of blue sports shorts and fold them over the upper pant leg and waistband."
+                ></video>
+                <div class="prompt-selector" role="group" aria-label="World simulator prompts">
+                  <button type="button" class="is-active" aria-pressed="true" data-simulator-video-src="videos/world-simulator-01.mp4" data-video-label="Grasp the lower pant leg and waistband of blue sports shorts and fold them over the upper pant leg and waistband.">
+                    Grasp the lower pant leg and waistband of blue sports shorts and fold them over the upper pant leg and waistband.
+                  </button>
+                  <button type="button" data-simulator-video-src="videos/world-simulator-02.mp4" data-video-label="Place the fruit on the table inside the green box.">
+                    Place the fruit on the table inside the green box.
+                  </button>
+                  <button type="button" data-simulator-video-src="videos/world-simulator-03.mp4" data-video-label="Move the apple to the top of the ladle">
+                    Move the apple to the top of the ladle
+                  </button>
+                  <button type="button" data-simulator-video-src="videos/world-simulator-04.mp4" data-video-label="Place the golden loaf with soft crust precisely to the right of the smooth rubikscube with black frame edges.">
+                    Place the golden loaf with soft crust precisely to the right of the smooth rubikscube with black frame edges.
+                  </button>
+                  <button type="button" data-simulator-video-src="videos/world-simulator-05.mp4" data-video-label="place the red pepper on the plate">
+                    place the red pepper on the plate
+                  </button>
+                  <button type="button" data-simulator-video-src="videos/world-simulator-06.mp4" data-video-label="Move the multi-grain bread to the top of the basket with left arm.">
+                    Move the multi-grain bread to the top of the basket with left arm.
+                  </button>
+                </div>
+                <div class="prompt-scroll-indicator" aria-hidden="true"><span></span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!--
+      <section class="section imagination-section" id="imagination" aria-labelledby="imagination-title">
+        <div class="page-shell">
+          <header class="section-heading on-dark">
+            <h2 id="imagination-title">Interactive egocentric world imagination.</h2>
+            <p>
+              A companion model generates first-person interaction video conditioned on hand
+              keypoints, the first frame, and camera motion.
+            </p>
+          </header>
+
+          <div class="imagination-grid">
+            <figure class="figure-frame figure-frame-light">
+              <button
+                class="figure-button"
+                type="button"
+                data-lightbox="assets/interactive-generation-architecture.png"
+                data-lightbox-alt="Interactive egocentric video generation architecture"
+                aria-label="Open the generation architecture"
+              >
+                <img
+                  src="assets/interactive-generation-architecture.png"
+                  alt="Hand keypoint and camera-conditioned video generation architecture"
+                  width="2400"
+                  height="1350"
+                  loading="lazy"
+                >
+                <span class="figure-open" aria-hidden="true">↗</span>
+              </button>
+              <figcaption>Conditioning architecture.</figcaption>
+            </figure>
+            <figure class="figure-frame figure-frame-light">
+              <button
+                class="figure-button"
+                type="button"
+                data-lightbox="assets/interactive-generation-results.jpg"
+                data-lightbox-alt="Interactive egocentric video generation results"
+                aria-label="Open the generated interaction sequences"
+              >
+                <img
+                  src="assets/interactive-generation-results.jpg"
+                  alt="Six egocentric interaction sequences generated over time"
+                  width="2200"
+                  height="1612"
+                  loading="lazy"
+                >
+                <span class="figure-open" aria-hidden="true">↗</span>
+              </button>
+              <figcaption>Generated interaction sequences.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+      -->
+    </main>
+
+    <footer class="site-footer">
+      <div class="page-shell footer-inner">
+        <p>Riemann-1.0 © 2026 Riemann Dynamics</p>
+      </div>
+    </footer>
+
+    <dialog class="figure-dialog" data-figure-dialog aria-labelledby="figure-dialog-title">
+      <div class="dialog-toolbar">
+        <p id="figure-dialog-title">Full-resolution figure</p>
+        <button type="button" aria-label="Close figure" data-dialog-close>×</button>
+      </div>
+      <div class="dialog-canvas">
+        <img
+          src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+          alt=""
+          data-dialog-image
+        >
+      </div>
+    </dialog>
+  </body>
+</html>
