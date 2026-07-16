@@ -14,7 +14,7 @@
     <meta property="og:title" content="Riemann-1.0">
     <meta
       property="og:description"
-      content="Advanced Embodied World Action Model for Physical AI"
+      content="An Embodied World Action Model for Physical AI"
     >
     <meta property="og:url" content="https://riemann-1.github.io/">
     <meta
@@ -82,7 +82,7 @@
         <div class="hero-scrim" aria-hidden="true"></div>
         <div class="hero-content page-shell">
           <h1 id="hero-title">Riemann-1.0</h1>
-          <p class="hero-subtitle">Advanced Embodied World Action Model for Physical AI</p>
+          <p class="hero-subtitle">An Embodied World Action Model for Physical AI</p>
           <p class="hero-lead">
             A fully causal autoregressive World Action Model that unifies executable
             robot policy and action-conditioned world simulation across heterogeneous
@@ -129,11 +129,7 @@
           <header class="section-heading">
             <h2 id="overview-title">One causal model, from open-world experience to robot control.</h2>
             <p>
-              Riemann-1.0 formulates robot interaction as a causal autoregressive
-              sequence: history predicts the next action, the action conditions the
-              next visual state, and real observations refresh the context. This
-              ordering lets one model serve as both an online robot policy and an
-              action-conditioned visual world simulator.
+              Riemann-1.0 represents robot interaction as a fully causal sequence over actions, observations, and states: history predicts the next action chunk, the action conditions the next visual transition, and real observations refresh the context. This lets one model act as both an executable policy and an action-conditioned visual simulator.
             </p>
           </header>
 
@@ -158,14 +154,14 @@
           <div class="contribution-grid">
             <article>
               <h3>Fully causal autoregressive WAM</h3>
-              <p>Jointly model multi-view observations, robot states, and embodiment-specific actions in the order used by real robot control.</p>
+              <p>Jointly model embodiment-specific actions, multi-view observations, and robot states in the order used by real robot control.</p>
             </article>
             <article>
               <h3>Progressive embodied pretraining</h3>
-              <p>Transfer from weakly supervised human interaction video to UMI, exoskeleton, and heterogeneous robot action trajectories.</p>
+              <p>Progressively transfer embodied knowledge from unlabeled egocentric videos to mixed action-trajectory supervision, then to robot-only policy enhancement.</p>
             </article>
             <article>
-              <h3>Policy and simulator in one model</h3>
+              <h3>Unified Robot Policy and World Simulator</h3>
               <p>Use the same causal action-video model for executable action prediction and action-conditioned future video generation.</p>
             </article>
           </div>
@@ -174,7 +170,7 @@
             <p>
               Riemann-1.0 turns large-scale heterogeneous embodied experience into a
               generalist closed-loop robot policy, executing complex long-horizon
-              real-world tasks with precise manipulation. The following videos showcase the complete process of Riemann-1.0 <b>autonomously</b> performing complex tasks in the real world</b>.
+              real-world tasks with precise manipulation. The following videos showcase the complete process of Riemann-1.0 autonomously performing complex real-world tasks after post-training with simple data collection, without complex data-engineering pipelines such as DAgger.</b>.
             </p>
             <div class="overview-video-grid" role="group" aria-label="Long-horizon real-world task videos">
               <figure class="overview-video-card">
@@ -251,7 +247,7 @@
             </article>
             <article class="task-card">
               <h3>Clothes</h3>
-              <p>Fold this deformable garment on the table through bimanual coordination and state-dependent correction.</p>
+              <p>Fold this deformable garment on the table through bimanual manipulation.</p>
               <div class="task-scores">
                 <div><strong>85.0%</strong><span>SR</span></div>
                 <div><strong>92.5%</strong><span>PSR</span></div>
@@ -431,7 +427,7 @@
           <header class="section-heading">
             <h2 id="data-title">Data Infra</h2>
             <p>
-              Riemann-1.0 converts 132K+ hours of heterogeneous embodied experience into
+              Riemann-1.0 converts 132K+ hours of heterogeneous data into
               action-level supervision through hierarchical VLM segmentation, instruction
               and action annotation, quality filtering, 3D hand-action reconstruction,
               semantic categorization, and scene-skill balancing. Egocentric human videos
@@ -459,7 +455,7 @@
             <h2 id="method-title">Causal video-action architecture</h2>
             <p>
               Riemann-1.0 preserves the causal order of interaction with a unified
-              autoregressive factorization over visual latents and actions. Multi-view
+              autoregressive factorization over action and visual latents. Multi-view
               observations, robot states, and embodiment-specific action tokens share a
               Action/Video DiT under structured causal visibility, preventing future
               observation leakage while retaining teacher-forced training.
@@ -526,7 +522,7 @@
             <h2 id="inference-title">Inference</h2>
             <p>
               Riemann-1.0 denoises the next action chunk from a growing visual-state cache.
-              After execution, real observations are encoded back into clean context tokens;
+              After execution, real observations are encoded back into context tokens;
               long rollouts use a sliding temporal window while preserving the same causal semantics.
             </p>
           </header>
@@ -553,27 +549,25 @@
           <div class="simulator-intro">
             <h3>Unified Robot Simulator</h3>
             <p>
-              The same causal model supports two complementary inference modes. World Policy
-              maps observed history to executable actions, while World Simulator treats a
-              candidate future action trajectory as a controllable input and predicts its
-              visual consequences for rollout inspection and action-plan comparison.
+              The same causal model supports two inference modes. Robot Policy
+              maps observed history to executable actions, while World Simulator supports predicting the visual consequences of input action trajectories for rollout inspection and action-plan comparison.
             </p>
           </div>
 
           <div class="simulator-modes">
             <article class="simulator-mode policy-mode">
-              <h3>World Policy</h3>
-              <p>Riemann-1.0 can act as a world policy to use observations (images + states) and task prompt to denoise the next action chunk.</p>
+              <h3>Robot Policy</h3>
+              <p>Riemann-1.0 can act as a robot policy to use observations (images + states) and task prompt to denoise the next action chunk.</p>
               <div class="mode-flow">
-                <span>Observation</span><b aria-hidden="true">→</b><span>Action</span>
+                <span>Observation + Prompt</span><b aria-hidden="true">→</b><span>Action</span>
               </div>
             </article>
 
             <article class="simulator-mode visual-mode">
               <h3>World Simulator</h3>
-              <p>Given the first frame image, prompt, and specified future actions, Riemann-1.0 can act as a world simulator to roll out action-consistent future observations.</p>
+              <p>Given the first frame image, prompt, and input future actions, Riemann-1.0 can act as a world simulator to roll out action-consistent future observations.</p>
               <div class="mode-flow">
-                <span>Context + action</span><b aria-hidden="true">→</b><span>Future video</span>
+                <span>Context + Action</span><b aria-hidden="true">→</b><span>Future video</span>
               </div>
 
               <div class="world-simulator-demo">
