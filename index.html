@@ -166,7 +166,7 @@
             </article>
             <article>
               <h3>Policy and simulator in one model</h3>
-              <p>Use the same causal action-video model for executable control and action-conditioned future-state rollout.</p>
+              <p>Use the same causal action-video model for executable action prediction and action-conditioned future video generation.</p>
             </article>
           </div>
 
@@ -174,43 +174,52 @@
             <p>
               Riemann-1.0 turns large-scale heterogeneous embodied experience into a
               generalist closed-loop robot policy, executing complex long-horizon
-              real-world tasks with precise manipulation.
+              real-world tasks with precise manipulation. The following videos showcase the complete process of Riemann-1.0 <b>autonomously</b> performing complex tasks in the real world</b>.
             </p>
             <div class="overview-video-grid" role="group" aria-label="Long-horizon real-world task videos">
               <figure class="overview-video-card">
-                <video
-                  src="videos/long_cloth.mp4"
-                  controls
-                  playsinline
-                  muted
-                  loop
-                  preload="metadata"
-                  aria-label="Pull the clothes, fold them, and stack them on the right side."
-                ></video>
+                <div class="overview-video-stage">
+                  <video
+                    src="videos/long_cloth.mp4"
+                    controls
+                    playsinline
+                    muted
+                    loop
+                    preload="metadata"
+                    aria-label="Pull the clothes, fold them, and stack them on the right side."
+                  ></video>
+                  <span class="overview-speed-badge" aria-hidden="true">4X</span>
+                </div>
                 <figcaption>Pull the clothes, fold them, and stack them on the right side.</figcaption>
               </figure>
               <figure class="overview-video-card">
-                <video
-                  src="videos/long_cube.mp4"
-                  controls
-                  playsinline
-                  muted
-                  loop
-                  preload="metadata"
-                  aria-label="First, stack all yellow blocks, followed by the red cubes, orange cubes, and finally the purple cubes."
-                ></video>
+                <div class="overview-video-stage">
+                  <video
+                    src="videos/long_cube.mp4"
+                    controls
+                    playsinline
+                    muted
+                    loop
+                    preload="metadata"
+                    aria-label="First, stack all yellow blocks, followed by the red cubes, orange cubes, and finally the purple cubes."
+                  ></video>
+                  <span class="overview-speed-badge" aria-hidden="true">4X</span>
+                </div>
                 <figcaption>First, stack all yellow blocks, followed by the red cubes, orange cubes, and finally the purple cubes.</figcaption>
               </figure>
               <figure class="overview-video-card">
-                <video
-                  src="videos/long_desk.mp4"
-                  controls
-                  playsinline
-                  muted
-                  loop
-                  preload="metadata"
-                  aria-label="Throw the crumpled paper into the trash can, place the spoon and fork into the basket, put the plate on the rack, empty the water from the bowl into the trash can, pull out a tissue and wipe the water off the table, and finally place the bowl on the rack."
-                ></video>
+                <div class="overview-video-stage">
+                  <video
+                    src="videos/long_kitchen.mp4"
+                    controls
+                    playsinline
+                    muted
+                    loop
+                    preload="metadata"
+                    aria-label="Throw the crumpled paper into the trash can, place the spoon and fork into the basket, put the plate on the rack, empty the water from the bowl into the trash can, pull out a tissue and wipe the water off the table, and finally place the bowl on the rack."
+                  ></video>
+                  <span class="overview-speed-badge" aria-hidden="true">4X</span>
+                </div>
                 <figcaption>Throw the crumpled paper into the trash can, place the spoon and fork into the basket, put the plate on the rack, empty the water from the bowl into the trash can, pull out a tissue and wipe the water off the table, and finally place the bowl on the rack.</figcaption>
               </figure>
             </div>
@@ -241,6 +250,14 @@
               </div>
             </article>
             <article class="task-card">
+              <h3>Clothes</h3>
+              <p>Fold this deformable garment on the table through bimanual coordination and state-dependent correction.</p>
+              <div class="task-scores">
+                <div><strong>85.0%</strong><span>SR</span></div>
+                <div><strong>92.5%</strong><span>PSR</span></div>
+              </div>
+            </article>
+            <article class="task-card">
               <h3>Cube stacking</h3>
               <p>Stack the cubes with the right hand in the order of blue, yellow, red, green, and green</p>
               <div class="task-scores">
@@ -254,14 +271,6 @@
               <div class="task-scores">
                 <div><strong>90.0%</strong><span>SR</span></div>
                 <div><strong>98.4%</strong><span>PSR</span></div>
-              </div>
-            </article>
-            <article class="task-card">
-              <h3>Clothes</h3>
-              <p>Fold this deformable garment on the table through bimanual coordination and state-dependent correction.</p>
-              <div class="task-scores">
-                <div><strong>85.0%</strong><span>SR</span></div>
-                <div><strong>92.5%</strong><span>PSR</span></div>
               </div>
             </article>
           </div>
@@ -279,9 +288,9 @@
             </div>
             <div class="video-selector" role="group" aria-label="Real-world task videos">
               <button type="button" class="is-active" aria-pressed="true" data-task-video-src="videos/desk_1080p_2x.mp4" data-video-label="Desk">Desk</button>
+              <button type="button" data-task-video-src="videos/clothes_1080p_2x.mp4" data-video-label="Clothes">Clothes</button>
               <button type="button" data-task-video-src="videos/cube-stacking_1080p_2x.mp4" data-video-label="Cube stacking">Cube stacking</button>
               <button type="button" data-task-video-src="videos/kitchen_1080p_2x.mp4" data-video-label="Kitchen">Kitchen</button>
-              <button type="button" data-task-video-src="videos/clothes_1080p_2x.mp4" data-video-label="Clothes">Clothes</button>
             </div>
           </div>
 
@@ -330,10 +339,10 @@
               </figure>
               <figure class="generalization-video-card">
                 <div class="generalization-video-stage">
-                  <video src="videos/OOD_1.mp4" controls playsinline muted loop preload="metadata" aria-label="Put the white paper ball into the trash can."></video>
+                  <video src="videos/OOD_1.mp4" controls playsinline muted loop preload="metadata" aria-label="Put the white napkins into the trash can."></video>
                   <span class="generalization-speed-badge" aria-hidden="true">3X</span>
                 </div>
-                <figcaption><span class="generalization-video-type">OOD zero-shot</span><span>Put the white paper ball into the trash can.</span></figcaption>
+                <figcaption><span class="generalization-video-type">OOD zero-shot</span><span>Put the white napkins into the trash can.</span></figcaption>
               </figure>
               <figure class="generalization-video-card">
                 <div class="generalization-video-stage">
@@ -366,8 +375,8 @@
           <header class="section-heading">
             <h2 id="simulation-title">Simulation benchmarks</h2>
             <p>
-              Riemann-1.0 reaches 99.0% average success on LIBERO, 94.3% on RoboTwin 2.0,
-              and 62.6% on RoboCasa365 under the reported evaluation protocols.
+              Riemann-1.0 reaches 99.0% average success rate on LIBERO, 94.3% on RoboTwin 2.0,
+              and 62.6% on RoboCasa365.
             </p>
           </header>
 
